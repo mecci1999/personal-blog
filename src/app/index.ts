@@ -1,6 +1,7 @@
 import express from "express";
 import cors from 'cors';
 import { ALLOW_ORIGIN } from "./app.config";
+import UserRouter from '@/user/user.router';
 
 /**
  * 创建应用
@@ -24,6 +25,7 @@ app.use(express.json())
 /**
  * 应用路由
  */
+app.use(UserRouter)
 
 /**
  * 默认异常处理器

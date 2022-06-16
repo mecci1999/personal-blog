@@ -9,9 +9,14 @@ export const getUserInfo = async () => {
     SELECT
       name,
       introduction,
-      info
+      info,
+      IF (
+        COUNT(avatar.id), 1, NULL
+      ) AS avatar
     FROM
       user
+    LEFT JOIN avatar
+    ON avatar.userId = user.id
     WHERE user.id = 1
   `;
 

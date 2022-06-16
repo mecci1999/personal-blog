@@ -4,6 +4,7 @@ import { ALLOW_ORIGIN } from "./app.config";
 import UserRouter from '@/user/user.router';
 import PostRouter from '@/post/post.router';
 import authRouter from '@/auth/auth.router';
+import avatarRouter from '@/avatar/avatar.router';
 import { defaultErrorHandler } from './app.middleware'
 import { currentUser } from "../auth/auth.middleware";
 
@@ -34,7 +35,7 @@ app.use(currentUser);
 /**
  * 应用路由
  */
-app.use(UserRouter, PostRouter, authRouter);
+app.use(UserRouter, PostRouter, authRouter, avatarRouter);
 
 /**
  * 默认异常处理器

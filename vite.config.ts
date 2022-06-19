@@ -24,9 +24,8 @@ export default defineConfig({
     // 引入预处理器
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@/styles/index.scss";'
+        additionalData: '@import "./src/styles/index.scss";'
       }
     }
   }
 })
-

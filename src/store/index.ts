@@ -1,7 +1,9 @@
-import { createStore, storeKey } from 'vuex';
+import { createStore } from 'vuex';
+import { themeStoreModule, ThemeStoreState } from './modules/theme';
 
 export interface RootState {
   appName: string;
+  theme: ThemeStoreState;
 }
 
 /**
@@ -9,11 +11,11 @@ export interface RootState {
  */
 const store = createStore({
   state: {
-    appName: 'Mecci'
+    appName: 'Mecci',
   } as RootState,
 
   modules:{
-
+    theme: themeStoreModule,
   },
   
   // 插件

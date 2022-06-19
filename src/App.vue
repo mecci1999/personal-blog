@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
@@ -11,11 +11,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="app">
+  <div class="blog">
     <router-view />
   </div>
 </template>
 
-<style lang="scss" scoped>
-@import "./styles/index.scss";
+<style lang="scss">
+@import './styles/index.scss';
 </style>

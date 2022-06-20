@@ -1,5 +1,6 @@
 import { createStore } from 'vuex';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
+import { LocalStorageStroePlugin } from './plugins';
 
 export interface RootState {
   appName: string;
@@ -19,7 +20,7 @@ const store = createStore({
   },
   
   // 插件
-  plugins:[]
+  plugins:[LocalStorageStroePlugin],
 });
 
 /**

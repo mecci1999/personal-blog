@@ -4,6 +4,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+  user-select: none;
 
   &-name {
     font-size: var(--font-size-middle);

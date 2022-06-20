@@ -1,9 +1,16 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, reactive } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
   setup() {
-    return {};
+    const store = useStore();
+
+    const theme = computed(() => store.getters['theme/theme']);
+
+    return {
+      theme,
+    };
   },
 
   components: {},
@@ -11,7 +18,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="blog">
+  <div :class="['blog', theme]">
     <router-view />
   </div>
 </template>

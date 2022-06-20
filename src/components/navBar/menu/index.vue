@@ -1,6 +1,7 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent, reactive } from 'vue';
 import { useStore } from 'vuex';
+import { getStroage } from '../../../utils/localStorage';
 import AppIcon from '../../common/app-icon/index.vue';
 import NavMenuItem from './item/index.vue';
 
@@ -11,9 +12,13 @@ export default defineComponent({
     const store = useStore();
 
     // 主题
-    const theme = store.getters['theme/theme'];
+    const theme = getStroage('theme');
+    if(theme) {
+      store.commit('theme/setTheme', theme);
+    }
+    const themeIcon = computed(() => store.getters['theme/themeIcon']);
 
-    const MenuList = [
+    const MenuList =  [
       {
         icon: 'search',
         text: '搜索',
@@ -39,15 +44,19 @@ export default defineComponent({
         text: '关于',
         path: 'about',
       },
-      {
-        icon: theme === 'dark' ? 'wb_sunny' : 'wb_incandescent',
-        text: '主题',
-        path: '',
-      },
     ];
+
+    // 定义切换主题方法
+    const changeTheme = () => {
+      const theme = store.getters['theme/theme'] === 'dark' ? 'light' : 'dark';
+
+      store.commit('theme/setTheme', theme);
+    };
 
     return {
       MenuList,
+      themeIcon,
+      changeTheme,
     }
   },
 
@@ -62,6 +71,10 @@ export default defineComponent({
   <div class="nav-menu">
     <div class="nav-menu-list">
       <NavMenuItem v-for="item in MenuList" :key="item.text" :item="item" />
+       <div class="nav-menu-list-item" @click="changeTheme">
+        <AppIcon :name="themeIcon" size="20" />
+        <span class="nav-menu-list-item-name">主题</span>
+       </div>
     </div>
   </div>
 </template>

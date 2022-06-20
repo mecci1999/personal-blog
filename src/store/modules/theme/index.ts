@@ -3,6 +3,7 @@ import { RootState } from '../../index';
 
 export interface ThemeStoreState {
   theme: string;
+  themeIcon: string;
 }
 
 export const themeStoreModule: Module<ThemeStoreState, RootState> = {
@@ -15,7 +16,8 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
    * 数据
    */
   state: {
-    theme: 'light'
+    theme: 'light',
+    themeIcon: 'wb_sunny'
   } as ThemeStoreState,
 
   /**
@@ -25,6 +27,10 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
     theme(state) {
       return state.theme;
     },
+
+    themeIcon(state) {
+      return state.theme === 'dark' ? 'brightness_2' : 'wb_sunny';
+    }
   },
 
   /**
@@ -33,7 +39,7 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
   mutations: {
     setTheme(state, data) {
       state.theme = data;
-    }
+    },
   },
 
   /**

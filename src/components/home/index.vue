@@ -2,6 +2,7 @@
 import { defineComponent } from 'vue';
 import NavBar from '../navBar/index.vue';
 import AppIcon from '../common/app-icon/index.vue';
+import UserInfo from '../user/info/index.vue';
 
 export default defineComponent({
   name: "AppHome",
@@ -18,7 +19,8 @@ export default defineComponent({
 
   components: {
     NavBar,
-    AppIcon
+    AppIcon,
+    UserInfo,
   },
 });
 </script>
@@ -34,7 +36,16 @@ export default defineComponent({
       </div>
     </div>
     <NavBar />
-    <div id="main" class="app-main" ref="appMain"></div>
+    <div id="main" class="app-main">
+      <div class="app-main-container">
+        <div class="app-main-container-left">
+          <UserInfo />
+        </div>
+        <div class="app-main-container-right">
+          
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

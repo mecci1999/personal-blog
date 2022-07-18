@@ -1,0 +1,110 @@
+.app-search {
+  &-dialog {
+    border-radius: 12px !important;
+    box-shadow: var(--primary-background-shadow);
+    background-color: var(--primary-background);
+    // border: 1px solid var(--line-color);
+    transition: all 0.3s;
+    position: fixed;
+    top: 5rem;
+    left: 50%;
+    z-index: 13;
+    margin-left: -15rem;
+    padding: 1rem;
+    width: 30rem;
+    border-radius: 5px;
+
+    &-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.7rem;
+
+      &-title {
+        font-weight: 700;
+        color: var(--mecci-theme-color);
+        font-size: 1.4rem;
+        line-height: 1;
+      }
+
+      &-button {
+        cursor: pointer;
+      }
+    }
+
+    &-panel {
+      &-input {
+        &-box {
+          padding-top: 8px;
+          margin: 0 auto;
+          width: 100%;
+          max-width: 100%;
+          position: relative;
+
+          .input-field {
+            border-radius: 8px !important;
+            border: 1px solid var(--line-color);
+            padding: 0.25rem 0.7rem;
+            outline: 0;
+            color: var(--mecci-font-color);
+            background-color: var(--search-input-background);
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    &-search-result {
+      padding-top: 8px;
+
+      &-hits {
+        &-item {
+          padding: 8px 4px;
+          font-weight: 700;
+          color: var(--mecci-font-color);
+          position: relative;
+          border-radius: 4px;
+
+          &:hover {
+            background-color: var(--mecci-theme-color);
+            color: #fff;
+          }
+
+          &-link {
+            width: auto;
+            max-width: 100%;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            cursor: pointer;
+            // transition: all 0.3s;
+          }
+        }
+      }
+
+      &-status {
+        color: var(--mecci-font-color);
+        line-height: 2;
+      }
+    }
+  }
+
+  &-mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 12;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: var(--search-mask-background);
+  }
+}

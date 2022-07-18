@@ -1,0 +1,32 @@
+.comment-panel {
+  width: 90%;
+  max-width: 1500px;
+  padding: 24px;
+  margin: 30px auto 30px;
+  height: max-content;
+  background-color: var(--primary-background);
+  box-shadow: var(--secondary-background-shadow);
+  border-radius: 8px;
+}
+
+.comment-panel-enter-active {
+  transform: translateY(200px);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.comment-panel-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.comment-panel-leave-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.comment-panel-leave-to {
+  transform: translateY(200px);
+  opacity: 0;
+}

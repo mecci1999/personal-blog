@@ -1,0 +1,93 @@
+.archive-list {
+  width: 100%;
+  box-shadow: var(--primary-background-shadow);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  line-height: 2;
+
+  &-item {
+    width: 100%;
+    flex: 0 0 48%;
+    cursor: pointer;
+
+    &-link {
+      border-radius: 8px;
+      margin: 4px 0;
+      display: flex;
+      flex-direction: column;
+      align-content: space-between;
+      border: 1px solid var(--line-color);
+      transition: all 0.3s;
+      padding: 0.15rem 0.5rem;
+      width: 100%;
+
+      &:hover {
+        color: #fff;
+        background-color: var(--mecci-theme-color);
+        border-radius: 8px;
+        border-color: var(--mecci-theme-color);
+
+        .archive-list-item-link-date {
+          color: #fff;
+        }
+
+        .archive-list-item-link-count {
+          color: #fff;
+        }
+      }
+
+      &-date {
+        display: inline-block;
+        vertical-align: bottom;
+        width: auto;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 14px;
+        opacity: 0.6;
+        color: var(--secondary-text-color);
+        transition: all 0.3s;
+      }
+
+      &-count {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        color: var(--mecci-home-color);
+        transition: all 0.3s;
+
+        &-amount {
+          display: inline-block;
+          vertical-align: bottom;
+          width: auto;
+          overflow: hidden;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: left;
+          font-size: 1.1rem;
+          line-height: 0.9;
+          font-weight: 700;
+        }
+
+        &-unit {
+          width: 20%;
+          text-align: right;
+          display: inline-block;
+          vertical-align: bottom;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: var(--font-size-normal);
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

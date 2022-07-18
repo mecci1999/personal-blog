@@ -1,0 +1,16 @@
+.app-comment {
+  width: 100%;
+  position: relative;
+  // overflow-x: hidden;
+  background-color: var(--primary-background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &-container {
+    color: var(--mecci-font-color);
+    background-color: var(--primary-background);
+    overflow-y: auto;
+    flex: 1;
+  }
+}

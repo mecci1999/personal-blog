@@ -1,0 +1,41 @@
+.tags-list {
+  width: 100%;
+  box-shadow: var(--primary-background-shadow);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  &-title {
+    color: var(--mecci-theme-color);
+    font-size: var(--font-size-middle);
+    margin-bottom: 0.2rem;
+    width: 100%;
+  }
+
+  &-item {
+    font-size: var(--font-size-middle);
+    color: var(--mecci-home-color);
+    border-radius: 8px;
+    display: inline-block;
+    padding: 0 0.3rem;
+    cursor: pointer;
+    line-height: 2;
+    &:hover {
+      color: #fff;
+      background-color: var(--mecci-theme-color);
+    }
+
+    &-amount {
+      opacity: 0.4;
+      margin-left: 2px;
+      font-size: 75%;
+      line-height: 0;
+      position: relative;
+      vertical-align: baseline;
+      //   top: -0.5em;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.post-list {
+  width: 100%;
+
+  &-group {
+    width: 100%;
+
+    @media screen and (min-width: 1300px) {
+      & {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        width: 100%;
+      }
+    }
+  }
+
+  &-bottom-tip {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: var(--font-size-middle);
+    color: var(--mecci-home-color);
+  }
+}

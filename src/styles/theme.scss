@@ -1,14 +1,26 @@
 .blog.light {
   /* Text */
   --primary-text-color: #000000;
-  --secondary-text-color: #585858;
-  --light-text-color: #adadad;
+  --secondary-text-color: #4c4948;
+  --light-text-color: #1f2d3d;
+  --primary-text-hover-color: #425aef;
+  --primary-text-blog-color: #34495e;
+  --code-text-color: #525252;
+  --mecci-home-color: #363636;
+  --mecci-secondary-color: rgba(60, 60, 67, 0.6);
+  --mecci-font-color: #4c4948;
 
   /* Background */
   --primary-background: #ffffff;
   --light-background: #f1f1f1;
   --page-header-background: #ffffff;
   --page-aside-background: #ffffff;
+  --code-background: #f8f8f8;
+  --comment-content-background: #edf0f7;
+  --scrollbar-thumb-background: rgba(50, 50, 50, 0.3);
+  --scrollbar-track-background: rgba(50, 50, 50, 0.1);
+  --search-input-background: #f6f8ff;
+  --search-mask-background: rgba(255, 255, 255, 0.6);
 
   /* Line */
   --line-color: #e1e3e7;
@@ -22,19 +34,40 @@
 
   /* Skeleton */
   --skeleton-background: #f0f0f0;
+
+  /* Shadow */
+  --primary-background-shadow: 0 15px 35px rgb(50 50 93 / 10%),
+    0 5px 15px rgb(0 0 0 / 7%);
+  --secondary-background-shadow: 0 10px 35px 2px rgb(0 0 0 / 15%),
+    0 5px 15px rgb(0 0 0 / 7%), 0 2px 5px -5px rgb(0 0 0 / 10%);
+
+  /* theme */
+  --mecci-theme-color: #425aef;
 }
 
 .blog.dark {
   /* Text */
   --primary-text-color: #b1b1b1;
-  --secondary-text-color: #585858;
-  --light-text-color: #656565;
+  --secondary-text-color: rgba(255, 255, 255, 0.9);
+  --light-text-color: ##ff;
+  --primary-text-hover-color: #0084ff;
+  --primary-text-blog-color: #b1b1b1;
+  --code-text-color: rgb(201, 209, 217);
+  --mecci-home-color: #f7f7fa;
+  --mecci-secondary-color: #a1a2b8;
+  --mecci-font-color: rgba(255, 255, 255, 0.9);
 
   /* Background */
   --primary-background: #222222;
   --light-background: #1f1f1f;
   --page-header-background: #222222;
   --page-aside-background: #2e2e2e;
+  --code-background: #2d2d2d;
+  --comment-content-background: #2b2b2b;
+  --scrollbar-thumb-background: rgba(200, 200, 200, 0.3);
+  --scrollbar-track-background: rgba(200, 200, 200, 0.1);
+  --search-input-background: #1e1e1e;
+  --search-mask-background: rgba(0, 0, 0, 0.6);
 
   /* Line */
   --line-color: #383838;
@@ -48,4 +81,11 @@
 
   /* Skeleton */
   --skeleton-background: #2b2b2b;
+
+  /* Shadow */
+  --primary-background-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+  --secondary-background-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+
+  /* theme */
+  --mecci-theme-color: #0084ff;
 }

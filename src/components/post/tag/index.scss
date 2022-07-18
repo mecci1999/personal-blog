@@ -1,0 +1,16 @@
+.post-tag {
+  transition: all 0.2s;
+  overflow-wrap: break-word;
+  margin-right: 4px;
+  padding: 0 0.2rem;
+  font-size: var(--font-size-normal);
+  color: var(--mecci-home-color);
+  border-radius: 4px;
+  line-height: 2;
+  font-weight: 600;
+
+  &:hover {
+    color: var(--primary-text-hover-color);
+    background-color: var(--comment-content-background);
+  }
+}

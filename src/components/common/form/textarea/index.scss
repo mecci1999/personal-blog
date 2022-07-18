@@ -1,0 +1,19 @@
+.textarea-field {
+  & > .input {
+    color: var(--primary-text-color);
+    background: var(--primary-background);
+    box-sizing: border-box;
+    padding: 12px;
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    border: 1px solid var(--line-color);
+    border-radius: 4px;
+
+    &:focus {
+      border: 1px solid var(--highlight-line-color);
+    }
+  }
+}

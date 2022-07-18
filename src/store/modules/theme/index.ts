@@ -17,7 +17,7 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
    */
   state: {
     theme: 'light',
-    themeIcon: 'wb_sunny'
+    themeIcon: 'wb_sunny',
   } as ThemeStoreState,
 
   /**
@@ -30,7 +30,7 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
 
     themeIcon(state) {
       return state.theme === 'dark' ? 'brightness_2' : 'wb_sunny';
-    }
+    },
   },
 
   /**
@@ -45,7 +45,5 @@ export const themeStoreModule: Module<ThemeStoreState, RootState> = {
   /**
    * 动作
    */
-  actions: {
-
-  },
+  actions: {},
 };

@@ -1,0 +1,33 @@
+.post-tab-bar {
+  padding: 0.4rem 1rem 0.4rem 0.5rem;
+  background: var(--primary-background);
+  border-radius: 12px;
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 16px;
+  // border: 1px solid var(--line-color);
+  transition: 0.3s;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--primary-background-shadow);
+
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
+
+  &-more {
+    margin-left: 1rem;
+    font-weight: 700;
+    font-size: var(--font-size-middle);
+    cursor: pointer;
+    color: var(--primary-text-color);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .post-tab-bar {
+    margin-bottom: 0.25rem;
+  }
+}

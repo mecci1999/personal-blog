@@ -1,10 +1,18 @@
 import { createStore } from 'vuex';
+import { commentStoreModule, CommentStoreState } from './modules/comment';
+import { postStoreModule, PostStoreState } from './modules/post';
+import { searchStoreModule, SearchStoreState } from './modules/search';
 import { themeStoreModule, ThemeStoreState } from './modules/theme';
+import { userStoreModule, UserStoreState } from './modules/user';
 import { LocalStorageStroePlugin } from './plugins';
 
 export interface RootState {
   appName: string;
   theme: ThemeStoreState;
+  user: UserStoreState;
+  comment: CommentStoreState;
+  post: PostStoreState;
+  search: SearchStoreState;
 }
 
 /**
@@ -15,12 +23,16 @@ const store = createStore({
     appName: 'Mecci',
   } as RootState,
 
-  modules:{
+  modules: {
     theme: themeStoreModule,
+    user: userStoreModule,
+    comment: commentStoreModule,
+    post: postStoreModule,
+    search: searchStoreModule,
   },
-  
+
   // 插件
-  plugins:[LocalStorageStroePlugin],
+  plugins: [LocalStorageStroePlugin],
 });
 
 /**

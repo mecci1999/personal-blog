@@ -1,0 +1,20 @@
+.input-field {
+  margin-left: 32px;
+  flex: 1;
+
+  & > .input {
+    color: var(--primary-text-color);
+    background: var(--primary-background);
+    box-sizing: border-box;
+    padding: 8px 0;
+    width: 100%;
+    outline: none;
+    border: none;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--line-color);
+
+    &:focus {
+      border-bottom: 1px solid var(--highlight-line-color);
+    }
+  }
+}

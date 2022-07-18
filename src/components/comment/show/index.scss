@@ -1,0 +1,17 @@
+.comment-show {
+  width: 100%;
+  margin-top: 24px;
+
+  &-title {
+    &-text {
+      color: var(--primary-text-blog-color);
+      font-size: var(--font-size-middle);
+      font-weight: bold;
+    }
+  }
+
+  &-list {
+    width: 100%;
+    margin-top: 16px;
+  }
+}

@@ -1,0 +1,178 @@
+.app-about {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary-background);
+
+  &-title {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    min-height: 50vh;
+    padding: 0 1rem !important;
+
+    @media screen and (max-width: 769px) {
+      & {
+        min-height: 40vh;
+
+        &-header {
+          font-size: 2.5rem !important;
+        }
+
+        &-description {
+          font-size: 25px !important;
+        }
+      }
+    }
+
+    &-header {
+      width: 980px;
+      font-size: 5rem;
+      font-family: Helvetica;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      color: var(--mecci-font-color);
+
+      span {
+        background-image: linear-gradient(45deg, #8a7cfb 50%, #633e9c);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-description {
+      font-size: 2.5rem;
+      font-family: Helvetica;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+      color: var(--mecci-font-color);
+
+      &-coding {
+        background-image: linear-gradient(45deg, #18e198 50%, #0ec15d);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+
+      &-item {
+        background-image: linear-gradient(45deg, #0ecffe 50%, #07a6f1);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+
+      &-ideal {
+        background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
+        background-size: 100% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  &-container {
+    width: 90%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 1rem !important;
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 400;
+      margin: 1rem 0;
+      text-align: left;
+      letter-spacing: 0.6px;
+      color: var(--mecci-font-color);
+    }
+
+    &-author {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+
+      &-description {
+        padding: 0 1rem;
+      }
+    }
+
+    &-announcement {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+    }
+
+    &-log {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+    }
+
+    &-adward {
+      width: 100%;
+      box-shadow: var(--primary-background-shadow);
+      color: var(--mecci-font-color);
+      border-radius: 8px;
+      line-height: 2;
+      font-size: var(--font-size-middle);
+      padding: 1rem;
+      margin: 1rem 0;
+
+      &-title {
+        color: var(--mecci-theme-color);
+        font-size: var(--font-size-large);
+      }
+
+      &-description {
+        padding: 0 1rem;
+      }
+
+      &-table {
+        padding: 0 1rem;
+      }
+    }
+  }
+}

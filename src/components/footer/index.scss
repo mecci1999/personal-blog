@@ -1,0 +1,29 @@
+.app-footer {
+  width: 100%;
+  background-color: var(--code-background);
+  color: var(--secondary-text-color);
+  box-shadow: 2px 0 0 rgb(#000000, 0.1);
+
+  &-info {
+    margin: 0 auto;
+    padding: 24px;
+    &-text {
+      text-align: center;
+      font-size: var(--font-size-middle);
+      color: var(--secondary-text-color);
+    }
+
+    &-time {
+      text-align: center;
+      line-height: 24px;
+      margin-bottom: 16px;
+      color: var(--secondary-text-color);
+      font-size: var(--font-size-middle);
+      letter-spacing: 1px;
+
+      b {
+        color: var(--primary-text-hover-color);
+      }
+    }
+  }
+}

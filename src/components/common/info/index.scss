@@ -1,0 +1,30 @@
+.app-info {
+  width: 100%;
+  box-shadow: var(--primary-background-shadow);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+
+  &-title {
+    color: var(--mecci-theme-color);
+    font-size: var(--font-size-middle);
+    margin-bottom: 0.2rem;
+    width: 100%;
+    line-height: 2;
+  }
+
+  &-post {
+    font-size: var(--font-size-normal);
+    color: var(--mecci-home-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 2;
+
+    &-amount {
+      color: var(--mecci-theme-color);
+    }
+  }
+}

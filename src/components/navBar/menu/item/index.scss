@@ -1,13 +1,96 @@
-.nav-menu-list-item{
+.nav-menu-list-item {
   padding-left: 24px;
   line-height: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
   user-select: none;
+  position: relative;
+
+  &:hover {
+    color: var(--primary-text-hover-color);
+
+    .nav-menu-list-item-name::after {
+      width: 52px;
+    }
+  }
+
+  & > .app-icon {
+    color: var(--primary-text-color) !important;
+  }
 
   &-name {
     font-size: var(--font-size-middle);
     margin-left: 4px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 2px;
+      background-color: var(--primary-text-hover-color);
+      position: absolute;
+      bottom: -10px;
+      width: 0px;
+      left: -10px;
+      transition: width 0.3s linear;
+    }
+  }
+
+  .explore-menu {
+    background: var(--primary-background);
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    position: absolute;
+    left: -150%;
+    top: 30px;
+    border-radius: 12px;
+    box-shadow: var(--primary-background-shadow);
+    padding: 8px;
+    transition: all 0.3s;
+    // backdrop-filter: blur(20px);
+    border: 1px solid var(--line-color);
+
+    &:hover {
+      border-color: var(--mecci-theme-color);
+    }
+
+    // &::before {
+    //   content: ' ';
+    //   display: block;
+    //   border-bottom: 10px solid var(--primary-background);
+    //   border-right: 10px solid transparent;
+    //   border-left: 10px solid transparent;
+    //   position: absolute;
+    //   left: 50%;
+    //   transform: translate(-50%, -100%);
+    //   top: 1px;
+    //   transition: all 0.3s;
+    // }
+
+    .explore-menu-list {
+      margin: 0 0.2rem;
+      border-radius: 4px;
+      color: var(--mecci-font-color);
+      padding: 0.3rem 0.7rem;
+      width: max-content;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+
+      & > .app-icon {
+        color: var(--mecci-font-color) !important;
+        margin-right: 4px !important;
+      }
+
+      &:hover {
+        background-color: var(--mecci-theme-color);
+        color: #fff;
+        & > .app-icon {
+          color: #fff !important;
+        }
+      }
+    }
   }
 }

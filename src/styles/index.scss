@@ -1,10 +1,11 @@
-@import "./normalize.scss";
-@import "./vars.scss";
-@import "./theme.scss";
+@import './normalize.scss';
+@import './vars.scss';
+@import './theme.scss';
 
 :root {
   // 字体
-  --font-family-base: "PingFangSC-Regular", "Microsoft YaHei", Arial, sans-serif;
+  // --font-family-base: 'PingFangSC-Regular', 'Microsoft YaHei', Arial, sans-serif;
+  --font-family-base: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei';
   --font-size-small: 12px;
   --font-size-normal: 14px;
   --font-size-middle: 16px;
@@ -16,6 +17,8 @@
 }
 
 html {
+  font-size: 20px;
+
   body {
     position: relative;
     width: 100%;
@@ -23,6 +26,11 @@ html {
     margin: 0;
     font-family: var(--font-family-base);
     font-size: var(--font-size-normal);
+    background: var(--primary-background);
+
+    .blog {
+      background-color: var(--primary-background);
+    }
   }
 
   #root {
@@ -33,5 +41,94 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
+  }
+
+  // 下面是博客主体的样式
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    margin-top: 3.5rem;
+    font-weight: bold;
+    color: var(--light-text-color);
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-top: 3.5rem;
+    color: var(--light-text-color);
+  }
+
+  h3 {
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--light-text-color);
+    font-weight: bold;
+  }
+
+  hr {
+    border: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: var(--secondary-text-color);
+    transform: scaleY(0.5);
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    font-weight: 400;
+    margin: 1rem 0;
+    text-align: left;
+    letter-spacing: 0.6px;
+  }
+
+  li {
+    list-style: decimal;
+    color: var(--secondary-text-color);
+    line-height: 28px;
+    font-size: 0.9rem;
+  }
+
+  a {
+    padding: 0 2px;
+    color: #425aef;
+    font-weight: 500;
+    text-decoration: underline;
+    word-wrap: break-word;
+    cursor: pointer;
+  }
+
+  pre {
+    background: var(--code-background);
+    color: var(--code-text-color);
+    font-family: Consolas;
+    text-align: left;
+    margin: 1em;
+    border-radius: 5px;
+    counter-reset: line;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    width: 100%;
+
+    code {
+      padding: 2.2em 5px;
+      line-height: inherit;
+      margin: 0 2px;
+      max-width: inherit;
+      overflow: inherit;
+      white-space: inherit;
+      font-size: 0.8rem;
+      font-family: 'consolas', 'Menlo', 'PingFang SC', 'Microsoft YaHei',
+        sans-serif !important;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router';
-import AppHome from '@/components/home/index.vue';
+import AppHome from '@/views/home/index.vue';
 
 /**
  * 定义路由

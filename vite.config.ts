@@ -1,8 +1,8 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,17 +15,28 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
-  resolve:{
+  resolve: {
     alias: {
-      '@': '/src'
-    }
+      '@': '/src',
+    },
   },
-  css:{
+  css: {
     // 引入预处理器
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "./src/styles/index.scss";'
-      }
-    }
-  }
-})
+        additionalData: '@import "./src/styles/index.scss";',
+      },
+    },
+  },
+  define: {
+    'process.env': {},
+  },
+  server: {
+    proxy: {
+      '*': {
+        target: 'https://tenapi.cn/',
+        changeOrigin: true,
+      },
+    },
+  },
+});

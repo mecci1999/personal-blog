@@ -1,0 +1,197 @@
+.user-info {
+  width: 100%;
+  height: 360px;
+  box-shadow: var(--primary-background-shadow);
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and (min-width: 900px) {
+    & {
+      min-height: 330px;
+    }
+  }
+
+  // &:hover {
+  //   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.09);
+  // }
+
+  &-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    margin-bottom: 24px;
+  }
+
+  &-name {
+    color: var(--primary-text-color);
+    font-size: var(--font-size-large);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  &-description {
+    color: var(--secondary-text-color);
+    font-size: var(--font-size-normal);
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  &-directory {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    user-select: none;
+
+    &-blog {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        .user-info-directory-blog-title,
+        .user-info-directory-blog-amount {
+          color: var(--primary-text-hover-color);
+        }
+      }
+
+      &-title {
+        line-height: 32px;
+        color: var(--primary-text-color);
+        margin-bottom: 8px;
+        font-size: var(--font-size-middle);
+      }
+
+      &-amount {
+        font-size: var(--font-size-large);
+        font-weight: 200;
+        color: var(--secondary-text-color);
+      }
+    }
+
+    &-type {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        .user-info-directory-type-title,
+        .user-info-directory-type-amount {
+          color: var(--primary-text-hover-color);
+        }
+      }
+
+      &-title {
+        line-height: 32px;
+        color: var(--primary-text-color);
+        margin-bottom: 8px;
+        font-size: var(--font-size-middle);
+      }
+
+      &-amount {
+        font-size: var(--font-size-large);
+        font-weight: 200;
+        color: var(--secondary-text-color);
+      }
+    }
+
+    &-tag {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        .user-info-directory-tag-title,
+        .user-info-directory-tag-amount {
+          color: var(--primary-text-hover-color);
+        }
+      }
+
+      &-title {
+        line-height: 32px;
+        color: var(--primary-text-color);
+        margin-bottom: 8px;
+        font-size: var(--font-size-middle);
+      }
+
+      &-amount {
+        font-size: var(--font-size-large);
+        font-weight: 200;
+        color: var(--secondary-text-color);
+      }
+    }
+  }
+
+  &-other {
+    display: flex;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+    justify-content: space-around;
+    user-select: none;
+
+    &-github {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        color: var(--secondary-text-color);
+        background-image: url('@/assets/icon/github.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-qq {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        color: var(--secondary-text-color);
+        background-image: url('@/assets/icon/qq.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-wechat {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-icon {
+        color: var(--secondary-text-color);
+        background-image: url('@/assets/icon/wechat.svg');
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        background-repeat: no-repeat;
+      }
+    }
+
+    &-email {
+      cursor: pointer;
+    }
+  }
+}

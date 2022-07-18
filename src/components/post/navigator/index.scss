@@ -1,0 +1,111 @@
+.post-navigator {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  height: 150px;
+  margin-bottom: 30px;
+
+  &-forward {
+    flex: 1;
+    height: 100%;
+    margin-right: 4px;
+    border-radius: 6px 0 0 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--primary-background-shadow);
+
+    &:hover {
+      .post-navigator-forward-shadow {
+        opacity: 0.2;
+      }
+
+      .post-navigator-forward-img {
+        transform: scale(1.1);
+      }
+    }
+
+    &-shadow {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      opacity: 0.7;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 6px 0 0 6px;
+      transition: all 0.6s ease 0s, filter 375ms ease-in 0.2s;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      transition: all 0.6s ease 0s, filter 375ms ease-in 0.2s;
+      object-fit: cover;
+      border-radius: 6px 0 0 6px;
+    }
+
+    &-text {
+      color: #ffffff;
+      font-size: var(--font-size-middle);
+      position: absolute;
+      top: 50%;
+      padding: 20px 40px;
+      width: 100%;
+      transform: translate(0px, -50%);
+    }
+  }
+
+  &-back {
+    flex: 1;
+    height: 100%;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--primary-background-shadow);
+
+    &:hover {
+      .post-navigator-back-shadow {
+        opacity: 0.2;
+      }
+
+      .post-navigator-back-img {
+        transform: scale(1.1);
+      }
+    }
+
+    &-shadow {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      opacity: 0.7;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 0 6px 6px 0;
+      transition: all 0.6s ease 0s, filter 375ms ease-in 0.2s;
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      transition: all 0.6s ease 0s, filter 375ms ease-in 0.2s;
+      object-fit: cover;
+      border-radius: 0 6px 6px 0;
+      background-color: #ffffff;
+    }
+
+    &-text {
+      color: #ffffff;
+      font-size: var(--font-size-middle);
+      text-align: right;
+      position: absolute;
+      top: 50%;
+      padding: 20px 40px;
+      width: 100%;
+      transform: translate(0px, -50%);
+    }
+  }
+}

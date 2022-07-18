@@ -1,6 +1,12 @@
 .nav-menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
   &-list {
     display: flex;
+    height: 100%;
+    padding: 16px 0;
 
     &-item {
       padding-left: 24px;
@@ -9,10 +15,34 @@
       display: flex;
       align-items: center;
       user-select: none;
+      &:hover {
+        color: var(--primary-text-hover-color);
+
+        .nav-menu-list-item-name::after {
+          width: 52px;
+        }
+      }
+
+      & > .app-icon {
+        color: var(--primary-text-color) !important;
+      }
 
       &-name {
         font-size: var(--font-size-middle);
         margin-left: 4px;
+        position: relative;
+
+        &::after {
+          content: '';
+          display: block;
+          height: 2px;
+          background-color: var(--primary-text-hover-color);
+          position: absolute;
+          bottom: -10px;
+          width: 0px;
+          left: -10px;
+          transition: width 0.3s linear;
+        }
       }
     }
   }

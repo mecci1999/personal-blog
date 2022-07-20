@@ -6,7 +6,7 @@
   "author": "mecci",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --inspect=3000 ./src/index.ts"
+    "serve": "nodemon --inspect=3000 ./src/index.ts"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

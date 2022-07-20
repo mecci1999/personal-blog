@@ -11,14 +11,23 @@ export class PostModel {
 }
 
 export enum PostType {
-  technology = 'technology', // 技术
-  life = 'life', // 生活感想
-  story = 'story', // 故事
-  other = 'other', // 其他
+  technology = "technology", // 技术
+  life = "life", // 生活感想
+  story = "story", // 故事
+  other = "other", // 其他
 }
 
 export enum PostStatus {
-  published = 'published', // 已发布
-  draft = 'draft', // 草稿
-  archived = 'archived', // 
+  published = "published", // 已发布
+  draft = "draft", // 草稿
+  archived = "archived", //
+}
+
+// 博客封面数据类型
+export class PostBgImgModel {
+  id?: number;
+  mimetype?: string;
+  filename?: string;
+  size?: number;
+  postId?: number;
 }

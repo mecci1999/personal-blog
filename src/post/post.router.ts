@@ -41,6 +41,38 @@ router.post(
 router.get("/posts/:postId/bgImg", postController.serve);
 
 /**
+ * 添加内容标签
+ */
+router.post(
+  "/posts/:postId/tag",
+  authGuard,
+  // accessControl({ prossession: true }),
+  // accessLog({
+  //   action: 'createPostTag',
+  //   resourceType: 'post',
+  //   resourceParamName: 'postId',
+  //   payloadParam: 'body.name',
+  // }),
+  postController.storePostTag
+);
+
+/**
+ * 移除内容标签
+ */
+router.delete(
+  "/posts/:postId/tag",
+  authGuard,
+  // accessControl({ prossession: true }),
+  // accessLog({
+  //   action: 'deletePostTag',
+  //   resourceType: 'post',
+  //   resourceParamName: 'postId',
+  //   payloadParam: 'body.name',
+  // }),
+  postController.destroyPostTag
+);
+
+/**
  * 默认导出路由
  */
 export default router;

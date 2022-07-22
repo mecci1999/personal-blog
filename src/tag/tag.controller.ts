@@ -50,3 +50,22 @@ export const destory = async (
     next(error);
   }
 };
+
+/**
+ * 标签列表
+ */
+export const index = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  try {
+    // 删除标签
+    const data = await tagService.getTagList();
+
+    //做出响应
+    response.status(201).send(data);
+  } catch (error) {
+    next(error);
+  }
+};

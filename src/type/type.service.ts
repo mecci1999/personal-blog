@@ -51,3 +51,24 @@ export const deleteType = async (typeId: number) => {
   //提供数据
   return data;
 };
+
+/**
+ * 获取分类列表
+ */
+export const getTypeList = async () => {
+  // 准备查询
+  const statement = `
+    SELECT
+      type.id,
+      type.name
+    FROM
+      type
+    GROUP BY type.name
+  `;
+
+  // 执行查询
+  const [...data] = await connection.promise().query(statement);
+
+  // 提供数据
+  return data[0];
+};

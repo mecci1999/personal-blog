@@ -15,6 +15,11 @@ router.post("/types", authGuard, typeController.store);
 router.get("/types/:typeId/delete", authGuard, typeController.destory);
 
 /**
+ * 获取分类列表
+ */
+router.get("/types/list", authGuard, typeController.index);
+
+/**
  * 导出默认路由
  */
 export default router;

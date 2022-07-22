@@ -51,3 +51,29 @@ export const deleteTag = async (tagId: number) => {
   //提供数据
   return data;
 };
+
+/**
+ * 获取标签列表
+ */
+export const getTagList = async () => {
+  // 准备查询
+  const statement = `
+    SELECT
+      tag.id,
+      tag.name,
+      COUNT(
+        post.id
+      ) AS amount
+    FROM
+      tag
+    LEFT JOIN post_tag ON post_tag.tagId = tag.id
+    LEFT JOIN post ON post.id = post_tag.postId
+    GROUP BY tag.name
+  `;
+
+  // 执行查询
+  const [...data] = await connection.promise().query(statement);
+
+  // 提供数据
+  return data[0];
+};

@@ -4,11 +4,14 @@ import {
   createPost,
   createPostBgImg,
   creatPostTag,
+  creatPostType,
   deletePostTag,
+  deletePostType,
   findBgImgByPostId,
   getOnlyOnePost,
   getPostList,
   postHasTag,
+  postHasType,
 } from "./post.service";
 import fs from "fs";
 import _ from "lodash";
@@ -16,6 +19,8 @@ import { APP_PORT } from "@/app/app.config";
 import path from "path";
 import { createTag, getTagByName } from "@/tag/tag.service";
 import { TagModel } from "@/tag/tag.model";
+import { TypeModel } from "@/type/type.model";
+import { createType, getTypeByName } from "@/type/type.service";
 
 /**
  * 创建博客
@@ -263,6 +268,81 @@ export const destroyPostTag = async (
   // 移除内容标签
   try {
     await deletePostTag(parseInt(postId, 10), tagId);
+
+    response.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * 添加内容分类
+ */
+export const storePostType = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  // 准备数据
+  const { postId } = request.params;
+  const { name } = request.body;
+
+  let type: TypeModel;
+
+  //判断数据仓库中有没有当前这个标签
+  try {
+    type = await getTypeByName(name);
+  } catch (error) {
+    return next(error);
+  }
+
+  //找到标签
+  if (type) {
+    //验证内容标签
+    try {
+      const postType = await postHasType(parseInt(postId, 10), type.id);
+      if (postType) return next(new Error("POST_ALREADY_HAS_THIS_TYPE"));
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  // 没有找到标签
+  if (!type) {
+    try {
+      const data = await createType({ name });
+      type = { id: data.insertId };
+    } catch (error) {
+      return next(error);
+    }
+  }
+
+  //给内容贴上标签
+  try {
+    await creatPostType(parseInt(postId, 10), type.id);
+
+    //做出响应
+    response.sendStatus(201);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+/**
+ * 删除内容分类
+ */
+export const destroyPostType = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  // 准备数据
+  const { postId } = request.params;
+  const { typeId } = request.body;
+
+  // 移除内容标签
+  try {
+    await deletePostType(parseInt(postId, 10), typeId);
 
     response.sendStatus(200);
   } catch (error) {

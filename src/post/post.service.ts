@@ -78,6 +78,22 @@ export const getOnlyOnePost = async (postId: number) => {
       postbgimage.filename AS filename,
       CAST(
         IF(
+          COUNT(type.id),
+          CONCAT(
+            '[',
+              GROUP_CONCAT(
+                DISTINCT JSON_OBJECT(
+                  'id',type.id,
+                  'name',type.name
+                )
+              ),
+            ']'
+          ),
+          NULL
+        ) AS JSON
+      ) AS types,
+      CAST(
+        IF(
           COUNT(tag.id),
           CONCAT(
             '[',
@@ -102,6 +118,10 @@ export const getOnlyOnePost = async (postId: number) => {
       ON post.id = post_tag.postId
     LEFT JOIN
       tag ON post_tag.tagId = tag.id
+    LEFT JOIN post_type
+      ON post.id = post_type.postId
+    LEFT JOIN
+      type ON post_type.typeId = type.id
     WHERE
       post.id = ?
   `;
@@ -198,6 +218,59 @@ export const deletePostTag = async (postId: number, tagId?: number) => {
 
   // 执行查询
   const [data] = await connection.promise().query(statement, [postId, tagId]);
+
+  // 提供数据
+  return data;
+};
+
+/**
+ * 检查内容分类
+ */
+export const postHasType = async (postId: number, typeId?: number) => {
+  // 准备查询
+  const statement = `
+    SELECT * FROM post_type
+    WHERE postId=? AND typeId=?
+  `;
+
+  // 执行查询
+  const [...data] = await connection
+    .promise()
+    .query(statement, [postId, typeId]);
+
+  // 提供数据
+  return data[0][0] ? true : false;
+};
+
+/**
+ * 保存内容分类
+ */
+export const creatPostType = async (postId: number, typeId?: number) => {
+  // 准备查询
+  const statement = `
+    INSERT INTO post_type (postId, typeId)
+    VALUES(?, ?)
+  `;
+
+  // 执行查询
+  const [data] = await connection.promise().query(statement, [postId, typeId]);
+
+  // 提供数据
+  return data;
+};
+
+/**
+ * 删除内容分类
+ */
+export const deletePostType = async (postId: number, typeId?: number) => {
+  //准备查询
+  const statement = `
+    DELETE FROM post_type
+    WHERE postId=? AND typeId=?
+  `;
+
+  // 执行查询
+  const [data] = await connection.promise().query(statement, [postId, typeId]);
 
   // 提供数据
   return data;

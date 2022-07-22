@@ -73,6 +73,38 @@ router.delete(
 );
 
 /**
+ * 添加内容分类
+ */
+router.post(
+  "/posts/:postId/type",
+  authGuard,
+  // accessControl({ prossession: true }),
+  // accessLog({
+  //   action: 'createPostTag',
+  //   resourceType: 'post',
+  //   resourceParamName: 'postId',
+  //   payloadParam: 'body.name',
+  // }),
+  postController.storePostType
+);
+
+/**
+ * 移除内容分类
+ */
+router.delete(
+  "/posts/:postId/type",
+  authGuard,
+  // accessControl({ prossession: true }),
+  // accessLog({
+  //   action: 'deletePostTag',
+  //   resourceType: 'post',
+  //   resourceParamName: 'postId',
+  //   payloadParam: 'body.name',
+  // }),
+  postController.destroyPostType
+);
+
+/**
  * 默认导出路由
  */
 export default router;

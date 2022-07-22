@@ -95,7 +95,7 @@ export const show = async (
     const data = await getOnlyOnePost(parseInt(postId, 10));
 
     // 对时间做处理
-    const [{ created, updated, filename }] = data;
+    const [{ created, updated }] = data;
 
     data[0].created = changeTimeFormat(created);
     data[0].updated = changeTimeFormat(updated);

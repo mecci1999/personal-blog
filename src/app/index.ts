@@ -1,11 +1,13 @@
 import express from "express";
-import cors from 'cors';
+import cors from "cors";
 import { ALLOW_ORIGIN } from "./app.config";
-import UserRouter from '@/user/user.router';
-import PostRouter from '@/post/post.router';
-import authRouter from '@/auth/auth.router';
-import avatarRouter from '@/avatar/avatar.router';
-import { defaultErrorHandler } from './app.middleware'
+import UserRouter from "@/user/user.router";
+import PostRouter from "@/post/post.router";
+import authRouter from "@/auth/auth.router";
+import avatarRouter from "@/avatar/avatar.router";
+import tagRouter from "@/tag/tag.router";
+import typeRouter from "@/type/type.router";
+import { defaultErrorHandler } from "./app.middleware";
 import { currentUser } from "../auth/auth.middleware";
 
 /**
@@ -18,7 +20,7 @@ const app = express();
  */
 app.use(
   cors({
-    origin: ALLOW_ORIGIN
+    origin: ALLOW_ORIGIN,
   })
 );
 
@@ -35,7 +37,14 @@ app.use(currentUser);
 /**
  * 应用路由
  */
-app.use(UserRouter, PostRouter, authRouter, avatarRouter);
+app.use(
+  UserRouter,
+  PostRouter,
+  authRouter,
+  avatarRouter,
+  tagRouter,
+  typeRouter
+);
 
 /**
  * 默认异常处理器

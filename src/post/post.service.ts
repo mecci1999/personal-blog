@@ -75,13 +75,33 @@ export const getOnlyOnePost = async (postId: number) => {
       ) AS user,
       post.created,
       post.updated,
-      postbgimage.filename AS filename
+      postbgimage.filename AS filename,
+      CAST(
+        IF(
+          COUNT(tag.id),
+          CONCAT(
+            '[',
+              GROUP_CONCAT(
+                DISTINCT JSON_OBJECT(
+                  'id',tag.id,
+                  'name',tag.name
+                )
+              ),
+            ']'
+          ),
+          NULL
+        ) AS JSON
+      ) AS tags
     FROM
       post
     LEFT JOIN user
       ON user.id = post.userId
     LEFT JOIN postbgimage
       ON post.id = postbgimage.postId
+    LEFT JOIN post_tag
+      ON post.id = post_tag.postId
+    LEFT JOIN
+      tag ON post_tag.tagId = tag.id
     WHERE
       post.id = ?
   `;

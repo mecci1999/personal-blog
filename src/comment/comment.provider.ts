@@ -18,16 +18,18 @@ export const sqlFragment = {
         JSON_OBJECT(
           'id', repliedComment.id,
           'content', repliedComment.content,
-          'userId', repliedCommentUser.id,
-          'name', repliedCommentUser.name,
-          'avatar', IF(COUNT(repliedCommentUserAvatar.id), 1, NULL)
+          'name', repliedComment.name,
+          'eMail', repliedComment.eMail,
+          'avatarImgUrl', repliedComment.avatarImgUrl,
+          'os',repliedComment.os,
+          'browser',repliedComment.browser,
+          'address',repliedComment.address,
+          'status', repliedComment.status,
+          'created', repliedComment.created,
+          'updated', repliedComment.updated
         )
       FROM
         comment repliedComment
-      LEFT JOIN user AS repliedCommentUser
-        ON repliedCommentUser.id = repliedComment.userId
-      LEFT JOIN avatar AS repliedCommentUserAvatar
-        ON repliedCommentUser.id = repliedCommentUserAvatar.userId
       WHERE comment.parentId = repliedComment.id
       ) AS repliedComment
   `,

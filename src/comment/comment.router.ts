@@ -27,7 +27,6 @@ router.post(
  */
 router.post(
   "/comments/:commentId/reply",
-  authGuard,
   // accessLog({
   //   action: 'createCommentReply',
   //   resourceType: 'comment',
@@ -42,7 +41,6 @@ router.post(
  */
 router.patch(
   "/comments/:commentId",
-  authGuard,
   // accessControl({ prossession: true }),
   // accessLog({
   //   action: 'updateComment',

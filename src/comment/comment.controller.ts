@@ -77,21 +77,38 @@ export const reply = async (
   // 准备数据
   const { commentId } = request.params;
   const parentId = parseInt(commentId, 10);
-  const { id: userId } = request.user;
-  const { content, postId } = request.body;
+  const {
+    content,
+    postId,
+    avatarImgUrl,
+    name,
+    eMail,
+    os,
+    browser,
+    address,
+    status,
+  } = request.body;
+
   const socketId = request.header("X-Socket-Id");
 
   const comment = {
     content,
     postId,
-    userId,
     parentId,
+    avatarImgUrl,
+    name,
+    eMail,
+    os,
+    browser,
+    address,
+    status,
   };
 
-  //判断当前回复是否为回复评论
+  //判断是否审核通过
   try {
-    const reply = await isReplyComment(parentId);
-    if (reply) return next(new Error("UNABLE_TO_REPLY_THIS_COMMENT"));
+    const reply = await getCommentById(parentId);
+    if (reply?.status !== "approved")
+      return next(new Error("UNABLE_TO_REPLY_THIS_COMMENT"));
   } catch (error) {
     return next(error);
   }

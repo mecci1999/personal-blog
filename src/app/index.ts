@@ -7,6 +7,7 @@ import authRouter from "@/auth/auth.router";
 import avatarRouter from "@/avatar/avatar.router";
 import tagRouter from "@/tag/tag.router";
 import typeRouter from "@/type/type.router";
+import commentRouter from "@/comment/comment.router";
 import { defaultErrorHandler } from "./app.middleware";
 import { currentUser } from "../auth/auth.middleware";
 
@@ -43,7 +44,8 @@ app.use(
   authRouter,
   avatarRouter,
   tagRouter,
-  typeRouter
+  typeRouter,
+  commentRouter
 );
 
 /**

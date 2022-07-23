@@ -1,5 +1,27 @@
+import { TokenPayload } from "@/auth/auth.interface";
 import { connection } from "../app/database/mysql";
-import { PostBgImgModel, PostModel } from "./post.model";
+import { PostBgImgModel, PostModel, PostStatus } from "./post.model";
+
+export interface GetPostsOptionsFilter {
+  name: string;
+  sql?: string | null;
+  param?: string | Array<string | number> | null;
+  params?: Array<string>;
+}
+
+export interface GetPostsOptionsPagination {
+  limit: number;
+  offset: number;
+}
+
+export interface GetPostsOptions {
+  sort?: string;
+  filter?: GetPostsOptionsFilter;
+  pagination?: GetPostsOptionsPagination;
+  currentUser?: TokenPayload;
+  postStatus?: PostStatus;
+  // auditLogStatus?: AuditLogStatus;
+}
 
 /**
  * 创建博客
@@ -21,8 +43,43 @@ export const createPost = async (post: PostModel) => {
 /**
  * 获取博客列表
  */
-export const getPostList = async () => {
+export const getPostList = async (options: GetPostsOptions) => {
   // 解构数据
+  const {
+    sort,
+    filter,
+    pagination,
+    currentUser,
+    postStatus: status,
+    // auditLogStatus: auditStatus,
+  } = options;
+
+  // SQL 参数
+  let params: Array<any> = [pagination?.limit, pagination?.offset];
+
+  // 设置 SQL 参数
+  if (filter?.param) {
+    params = [filter?.param, ...params];
+  }
+
+  if (filter?.params) {
+    params = [...filter?.params, ...params];
+  }
+
+  // if (currentUser) {
+  //   // 当前用户
+  //   var { id: userId, name: userName } = currentUser;
+  // }
+
+  // 发布状态
+  const whereStatus = status
+    ? `post.status = '${status}'`
+    : "post.status IS NOT NULL";
+
+  // // 审核状态
+  // const whereAuditStatus = auditStatus
+  //   ? `AND audit.status = '${auditStatus}'`
+  //   : "";
 
   //准备查询
   const statement = `
@@ -40,18 +97,66 @@ export const getPostList = async () => {
         'name',user.name
       ) AS user,
       post.created,
-      post.updated
+      post.updated,
+      postbgimage.filename AS filename,
+      CAST(
+        IF(
+          COUNT(type.id),
+          CONCAT(
+            '[',
+              GROUP_CONCAT(
+                DISTINCT JSON_OBJECT(
+                  'id',type.id,
+                  'name',type.name
+                )
+              ),
+            ']'
+          ),
+          NULL
+        ) AS JSON
+      ) AS types,
+      CAST(
+        IF(
+          COUNT(tag.id),
+          CONCAT(
+            '[',
+              GROUP_CONCAT(
+                DISTINCT JSON_OBJECT(
+                  'id',tag.id,
+                  'name',tag.name
+                )
+              ),
+            ']'
+          ),
+          NULL
+        ) AS JSON
+      ) AS tags
     FROM
       post
     LEFT JOIN user
     ON user.id = post.userId
+    LEFT JOIN postbgimage
+      ON post.id = postbgimage.postId
+    LEFT JOIN post_tag
+      ON post.id = post_tag.postId
+    LEFT JOIN
+      tag ON post_tag.tagId = tag.id
+    LEFT JOIN post_type
+      ON post.id = post_type.postId
+    LEFT JOIN
+      type ON post_type.typeId = type.id
+    WHERE ${filter?.sql}  AND ${whereStatus}
+    GROUP BY post.id 
+    ORDER BY ${sort}
+    LIMIT ?
+    OFFSET ?
   `;
 
   // 执行查询
-  const [data] = await connection.promise().query(statement);
+  const [data] = await connection.promise().query(statement, params);
 
   // 提供数据
-  return data;
+  return data as any;
 };
 
 /**
@@ -275,3 +380,48 @@ export const deletePostType = async (postId: number, typeId?: number) => {
   // 提供数据
   return data;
 };
+
+/**
+ * 统计内容数量
+ */
+// export const getPostsTotalCount = async (options: GetPostsOptions) => {
+//   // 准备数据
+//   const { filter, postStatus: status /*auditLogStatus: auditStatus*/ } =
+//     options;
+
+//   // SQL 参数
+//   let params = [filter?.param];
+
+//   if (filter.params) {
+//     params = [...filter.params, ...params];
+//   }
+
+//   // 发布状态
+//   const whereStatus = status
+//     ? `post.status = '${status}'`
+//     : `post.status IS NOT NULL`;
+
+//   // 审核状态
+//   // const whereAuditStatus = auditStatus
+//   //   ? `AND audit.status = '${auditStatus}'`
+//   //   : "";
+
+//   // 准备查询
+//   const statement = `
+//     SELECT
+//       COUNT(DISTINCT post.id) AS total
+//     FROM post
+//     ${sqlFragment.innerJoinFile}
+//     ${sqlFragment.leftJoinUser}
+//     ${sqlFragment.leftJoinTag}
+//     ${sqlFragment.leftJoinOneAuditLog}
+//     ${filter?.name == "userLiked" ? sqlFragment.innerJoinUserLikePost : ""}
+//     WHERE ${filter?.sql} AND ${whereStatus}
+//   `;
+
+//   //执行查询
+//   const [...data] = await connection.promise().query(statement, params);
+
+//   //提供数据
+//   return data[0][0].total;
+// };

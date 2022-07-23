@@ -72,11 +72,40 @@ export const index = async (
   response: Response,
   next: NextFunction
 ) => {
-  // 准备数据
+  // 解构查询符
+  const { status = "", auditStatus = "" } = request.query;
+  const postStatus = `${status}` as unknown as PostStatus;
+  // const auditLogStatus = (`${auditStatus}` as unknown) as AuditLogStatus;
+
+  //获得内容数量
+  // try {
+  //   const totalCount = await getPostsTotalCount({
+  //     filter: request.filter,
+  //     postStatus,
+  //     auditLogStatus,
+  //   });
+
+  //   //响应头部数据
+  //   response.header('X-Total-Count', totalCount);
+  // } catch (error) {
+  //   next(error);
+  // }
 
   try {
     // 调用获取列表方法
-    const data = await getPostList();
+    const data = await getPostList({
+      sort: request.sort,
+      filter: request.filter,
+      pagination: request.pagination,
+      currentUser: request.user,
+      postStatus,
+    });
+
+    data.forEach((item: any) => {
+      item.created = changeTimeFormat(item.created);
+      item.updated = changeTimeFormat(item.updated);
+      item.bgImgUrl = `localhost:3000/posts/${item.id}/bgImg`;
+    });
 
     // 做出响应
     response.send(data);

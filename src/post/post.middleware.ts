@@ -113,7 +113,7 @@ export const filter = async (
   next: NextFunction
 ) => {
   //获取数据
-  const { tagId, user, action, typeId } = request.query;
+  const { tagId, action, typeId } = request.query;
 
   //默认过滤
   request.filter = {
@@ -122,7 +122,7 @@ export const filter = async (
   };
 
   //按标签名进行过滤
-  if (tagId && !user && !action) {
+  if (tagId && !action) {
     request.filter = {
       name: "tagId",
       sql: "tag.id = ?",
@@ -131,7 +131,7 @@ export const filter = async (
   }
 
   //按分类名进行过滤
-  if (typeId && !user && !action) {
+  if (typeId && !action) {
     request.filter = {
       name: "typeId",
       sql: "type.id = ?",

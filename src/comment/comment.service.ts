@@ -103,9 +103,18 @@ export const getComments = async (options: GetCommentsOptions) => {
     SELECT
       comment.id,
       comment.content,
-      ${sqlFragment.post}
-      ${filter?.name == "userReplied" ? `, ${sqlFragment.repliedComment}` : ""}
-      ${filter?.name !== "userReplied" ? `, ${sqlFragment.totalReplies}` : ""}
+      comment.name,
+      comment.eMail,
+      comment.avatarImgUrl,
+      comment.os,
+      comment.browser,
+      comment.address,
+      comment.status,
+      comment.created,
+      comment.updated,
+      ${sqlFragment.post},
+      ${sqlFragment.replyCommentList},
+      ${sqlFragment.totalReplies}
     FROM
       comment
     ${sqlFragment.leftJoinPost}
@@ -175,13 +184,26 @@ export const getCommentReplies = async (options: GetCommentRepliesOptions) => {
   const statement = `
     SELECT
       comment.id,
-      comment.content
+      comment.content,
+      comment.name,
+      comment.eMail,
+      comment.avatarImgUrl,
+      comment.os,
+      comment.browser,
+      comment.address,
+      comment.status,
+      comment.created,
+      comment.updated,
+      ${sqlFragment.replyCommentList},
+      ${sqlFragment.totalReplies}
     FROM
       comment
     WHERE
       comment.parentId = ?
     GROUP BY
       comment.id
+    ORDER BY
+      comment.id DESC
   `;
 
   // 执行查询

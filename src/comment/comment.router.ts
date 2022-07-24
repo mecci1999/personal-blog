@@ -39,17 +39,17 @@ router.post(
 /**
  * 修改评论
  */
-router.patch(
-  "/comments/:commentId",
-  // accessControl({ prossession: true }),
-  // accessLog({
-  //   action: 'updateComment',
-  //   resourceType: 'comment',
-  //   resourceParamName: 'commentId',
-  //   payloadParam: 'body.content',
-  // }),
-  commentController.update
-);
+// router.patch(
+//   "/comments/:commentId",
+//   // accessControl({ prossession: true }),
+//   // accessLog({
+//   //   action: 'updateComment',
+//   //   resourceType: 'comment',
+//   //   resourceParamName: 'commentId',
+//   //   payloadParam: 'body.content',
+//   // }),
+//   commentController.update
+// );
 
 /**
  * 删除评论

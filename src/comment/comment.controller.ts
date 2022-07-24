@@ -107,6 +107,7 @@ export const reply = async (
   //判断是否审核通过
   try {
     const reply = await getCommentById(parentId);
+
     if (reply?.status !== "approved")
       return next(new Error("UNABLE_TO_REPLY_THIS_COMMENT"));
   } catch (error) {

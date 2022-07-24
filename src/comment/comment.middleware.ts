@@ -9,7 +9,7 @@ export const filter = async (
   next: NextFunction
 ) => {
   // 解构查询
-  const { post, user, action } = request.query;
+  const { post, action } = request.query;
 
   // 默认的过滤
   request.filter = {
@@ -18,7 +18,7 @@ export const filter = async (
   };
 
   // 内容的评论列表
-  if (post && !user && !action) {
+  if (post && !action) {
     request.filter = {
       name: "postComments",
       sql: "comment.parentId IS NULL AND comment.postId = ?",
@@ -26,23 +26,23 @@ export const filter = async (
     };
   }
 
-  // 用户的评论列表
-  if (user && action == "published" && !post) {
-    request.filter = {
-      name: "userPublished",
-      sql: "comment.parentId IS NULL AND comment.userId = ?",
-      param: `${user}`,
-    };
-  }
+  // // 用户的评论列表
+  // if (user && action == "published" && !post) {
+  //   request.filter = {
+  //     name: "userPublished",
+  //     sql: "comment.parentId IS NULL AND comment.userId = ?",
+  //     param: `${user}`,
+  //   };
+  // }
 
-  // 用户的回复评论列表
-  if (user && action == "replied" && !post) {
-    request.filter = {
-      name: "userReplied",
-      sql: "comment.parentId IS NOT NULL AND comment.userId = ?",
-      param: `${user}`,
-    };
-  }
+  // // 用户的回复评论列表
+  // if (user && action == "replied" && !post) {
+  //   request.filter = {
+  //     name: "userReplied",
+  //     sql: "comment.parentId IS NOT NULL AND comment.userId = ?",
+  //     param: `${user}`,
+  //   };
+  // }
 
   //下一步
   next();

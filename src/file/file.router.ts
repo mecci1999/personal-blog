@@ -22,6 +22,11 @@ router.get("/images/serve", fileController.serve);
 router.delete("/images/:fileId", authGuard, fileController.destory);
 
 /**
+ * 获取图片列表
+ */
+router.get('/images', authGuard, fileController.index)
+
+/**
  * 默认导出接口
  */
 export default router;

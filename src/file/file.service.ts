@@ -149,6 +149,25 @@ export const deletePostFiles = async (files: Array<FileModel>) => {
 };
 
 /**
+ * 获取图片列表
+ */
+export const getImageIndex = async () => {
+  // 准备查询
+  const statement = `
+    SELECT
+      *
+    FROM 
+      file
+  `
+
+  // 执行查询
+  const [...index] = await connection.promise().query(statement);
+
+  // 提供数据
+  return index[0][0] as any;
+}
+
+/**
  * 检查文件权限
  */
 // interface FileAccessControlOptions {

@@ -101,3 +101,14 @@ export const destory = async (
     response.send(data);
   } catch (error) {}
 };
+
+/**
+ * 获取图片信息列表
+ */
+export const index = async (
+  request: Request,
+  response: Response,
+  next: NextFunction
+) => {
+  // 
+}

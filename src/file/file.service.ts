@@ -155,17 +155,28 @@ export const getImageIndex = async () => {
   // 准备查询
   const statement = `
     SELECT
-      *
+      file.id,
+      file.originalname,
+      file.mimetype,
+      file.size,
+      file.created,
+      file.updated,
+      JSON_OBJECT(
+        'id',post.id,
+        'title',post.title
+      ) AS post
     FROM 
       file
-  `
+    LEFT JOIN post
+      ON post.id = file.postId
+  `;
 
   // 执行查询
   const [...index] = await connection.promise().query(statement);
 
   // 提供数据
-  return index[0][0] as any;
-}
+  return index[0] as any;
+};
 
 /**
  * 检查文件权限

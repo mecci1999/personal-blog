@@ -7,8 +7,10 @@ import {
   deletePostFiles,
   getFileById,
   getFileByName,
+  getImageIndex,
   uploadImage,
 } from "./file.service";
+import { changeTimeFormat } from "@/post/post.controller";
 
 /**
  * 上传图片文件
@@ -99,7 +101,9 @@ export const destory = async (
     const data = await deleteFileById(parseInt(`${fileId}`, 10));
 
     response.send(data);
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 };
 
 /**
@@ -110,5 +114,19 @@ export const index = async (
   response: Response,
   next: NextFunction
 ) => {
-  // 
-}
+  try {
+    const data = await getImageIndex();
+
+    // 对时间做处理
+    const [{ created, updated, size }] = data;
+
+    data[0].created = changeTimeFormat(created);
+    data[0].updated = changeTimeFormat(updated);
+
+    data[0].size = (size / 1024 / 1024).toFixed(2);
+
+    response.send(data);
+  } catch (error) {
+    next(error);
+  }
+};

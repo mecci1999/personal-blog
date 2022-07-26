@@ -10,6 +10,7 @@ import typeRouter from "@/type/type.router";
 import fileRouter from "@/file/file.router";
 import commentRouter from "@/comment/comment.router";
 import rewardRouter from "@/reward/reward.router";
+import announceRouter from "@/announce/announce.router";
 import { defaultErrorHandler } from "./app.middleware";
 import { currentUser } from "../auth/auth.middleware";
 
@@ -49,7 +50,8 @@ app.use(
   typeRouter,
   commentRouter,
   fileRouter,
-  rewardRouter
+  rewardRouter,
+  announceRouter
 );
 
 /**

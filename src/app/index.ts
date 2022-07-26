@@ -11,6 +11,7 @@ import fileRouter from "@/file/file.router";
 import commentRouter from "@/comment/comment.router";
 import rewardRouter from "@/reward/reward.router";
 import announceRouter from "@/announce/announce.router";
+import updateLogRouter from "@/updateLog/updateLog.router";
 import { defaultErrorHandler } from "./app.middleware";
 import { currentUser } from "../auth/auth.middleware";
 
@@ -51,7 +52,8 @@ app.use(
   commentRouter,
   fileRouter,
   rewardRouter,
-  announceRouter
+  announceRouter,
+  updateLogRouter
 );
 
 /**

@@ -32,7 +32,7 @@ export const createUpdateLog = async (option: updateLogOption) => {
 
   // 准备查询
   const statement = `
-    INSERT INTO updatelog(updatelog.content) VALUES(?)
+    INSERT INTO updatelog (updatelog.content) VALUES(?)
   `;
 
   // 执行查询

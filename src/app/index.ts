@@ -12,6 +12,7 @@ import commentRouter from "@/comment/comment.router";
 import rewardRouter from "@/reward/reward.router";
 import announceRouter from "@/announce/announce.router";
 import updateLogRouter from "@/updateLog/updateLog.router";
+import searchRouter from "@/search/search.router";
 import { defaultErrorHandler } from "./app.middleware";
 import { currentUser } from "../auth/auth.middleware";
 
@@ -53,7 +54,8 @@ app.use(
   fileRouter,
   rewardRouter,
   announceRouter,
-  updateLogRouter
+  updateLogRouter,
+  searchRouter
 );
 
 /**
